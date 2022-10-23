@@ -42,6 +42,9 @@ module PET2001
 
    output        AUDIO_L,
    output        AUDIO_R,
+	
+	output[15:0]  DAC_L,
+	output[15:0]  DAC_R,
 
    output        UART_TX,
    input         UART_RX,
@@ -582,6 +585,8 @@ wire [1:0] audio = {audioDat ^ tape_write, tape_audio & tape_active & (status[8:
 wire [7:0] aud_l = {2'b10,audio,4'd0};
 wire [7:0] aud_r = aud_l;
 
+assign DAC_L={aud_l,aud_l};
+assign DAC_R=DAC_L;
 
 wire        tape_audio;
 wire        tape_rd;

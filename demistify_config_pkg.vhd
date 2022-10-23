@@ -36,6 +36,13 @@ constant demistify_serialdebug : std_logic := '0';
 		(
 			CLOCK_27 :	IN STD_LOGIC;	-- Comment out one of these two lines
 			LED : out STD_LOGIC;
+			UART_TX   : OUT std_logic;
+			UART_RX   : IN std_logic;
+			DAC_L     :	OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+			DAC_R     :	OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+			
+			
+			
 --			CLOCK_27 :	IN STD_LOGIC_VECTOR(1 downto 0);	-- to match the guest core
 			SDRAM_DQ_IN     :	 IN STD_LOGIC_VECTOR(15 DOWNTO 0) := (others => '0');
 			SDRAM_DQ_OUT 	:	 OUT STD_LOGIC_VECTOR(15 DOWNTO 0);

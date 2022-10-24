@@ -123,6 +123,7 @@ assign keyrow = pia1_porta_out[3:0];
 // (does nothing for now)
 wire       pia2_strobe = strobe_io && (addr[10:2] == 9'b000_0010_00);
 wire [7:0] pia2_data_out;
+wire [7:0] pia2_porta_out;
 wire       pia2_irq;
 
 pia6520 pia2
@@ -134,7 +135,7 @@ pia6520 pia2
 	.we(we),
 
 	.irq(pia2_irq),
-	.porta_out(),
+	.porta_out(pia2_porta_out),
 	.porta_in(8'h00),
 	.portb_out(),
 	.portb_in(8'h00),
@@ -159,6 +160,9 @@ wire [7:0] via_data_out;
 wire       via_irq;
 wire [7:0] via_portb_out;
 wire [7:0] via_portb_in = {2'b00, video_sync, 5'b0_0000};
+wire audio_out;
+
+assign audio=~(audio_out&pia1_porta_out[7]);
 
 via6522 via
 (
@@ -180,8 +184,8 @@ via6522 via
 
 	.cb1_out(),
 	.cb1_in(1'b0),
-	.cb2_out(audio),
-	.cb2_in(1'b0),
+	.cb2_out(audio_out),
+	.cb2_in(1'b1),
 
 	.ce(ce),
 

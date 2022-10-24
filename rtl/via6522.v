@@ -256,7 +256,7 @@ always @(posedge clk) begin
 			3'b100:  cb2_out <= cb2_out_r;
 			3'b101:  cb2_out <= !portb_wr_strobe;
 			3'b111:  cb2_out <= 1'b1;
-			default: cb2_out <= 1'b0;
+			//default: cb2_out <= 1'b0;
 		endcase
 	end
 end

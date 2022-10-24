@@ -105,7 +105,7 @@ end
 
 // Implement PORTA (out)
 always @(posedge clk) begin
-	if (reset) porta_out <= 8'h00;
+	if (reset) porta_out <= 8'hFF;
 	else if (wr_strobe && addr == ADDR_PORTA && cra[2]) porta_out <= data_in;
 end
 
@@ -117,7 +117,7 @@ end
 
 // Implement PORTB (out)
 always @(posedge clk) begin
-	if (reset) portb_out <= 8'h00;
+	if (reset) portb_out <= 8'hFF;
 	else if (wr_strobe && addr == ADDR_PORTB && crb[2]) portb_out <= data_in;
 end
 
